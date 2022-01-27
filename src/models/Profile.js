@@ -1,11 +1,15 @@
 export class Profile {
   constructor(data) {
-    this.email = data.email
-    this.firstName = data.firstName
-    this.lastName = data.lastName
-    this.gamerTag = data.gamerTag
-    this.profileXuid = data.ownerXuid
-    this.dateOfBirth = new Date(data.dateOfBirth).toLocaleDateString()
-    this.profileImg = data.imageUrl
+    this.xuid = data.xuid
+    this.gamerTag = data.uniqueModernGamertag
+    this.rep = data.xboxOneRep
+    this.preferredColors = data.preferredColor
+    this.presence = data.presenceText
+    this.multiplayerSummary = data.multiplayerSummary
+    this.gamerScore = data.gamerScore
+    this.profileDetails = data.detail
+    this.profileImg = data.displayPicRaw
+    this.preferredPlatforms = data.preferredPlatforms
+    this.linkedAccounts = data.linkedAccounts
   }
 }
