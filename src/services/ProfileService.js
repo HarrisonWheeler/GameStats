@@ -1,0 +1,26 @@
+import axios from "axios"
+import { AppState } from "../AppState"
+import { Profile } from "../models/Profile"
+import { logger } from "../utils/Logger"
+import { api } from "./AxiosService"
+
+const xblApi = axios.create({
+  baseURL: 'https://xapi.us/v2/',
+  timeout: 5000
+})
+
+// NOTE saving the XUID in the profile object - can just pull it off of the profile of the current user
+class ProfileService {
+  async getProfile() {
+    const res = await xblApi.get('/profile', {
+      headers: {
+        "X-AUTH": "1d395cf0c099eed346eef8836040323f5c56f6e6"
+      }
+    })
+    logger.log('get profile res', res.data)
+    AppState.profile = new Profile(res.data)
+  }
+
+}
+
+export const profileService = new ProfileService()
