@@ -5,5 +5,5 @@ export const AppState = reactive({
   user: {},
   account: {},
   xblProfile: {},
-  steamProfiles: []
+  steamProfile: []
 })
