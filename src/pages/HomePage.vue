@@ -12,7 +12,8 @@ export default {
   setup() {
     onMounted(() => {
       try {
-        profileService.getProfile();
+        profileService.getXblProfile();
+        profileService.getSteamProfile();
       } catch (error) {
         Pop.toast(error.message, "error");
         logger.log(error);

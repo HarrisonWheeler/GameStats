@@ -1,4 +1,4 @@
-export class Profile {
+export class XblProfile {
   constructor(data) {
     this.xuid = data.xuid
     this.gamerTag = data.uniqueModernGamertag
