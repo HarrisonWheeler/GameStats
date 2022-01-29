@@ -1,4 +1,3 @@
-import axios from "axios"
 import { AppState } from "../AppState"
 import { steamKey, steamUserId, xauth, xuid } from "../env"
 import { SteamProfile } from "../models/SteamProfile"
@@ -6,9 +5,7 @@ import { XblProfile } from "../models/XblProfile"
 import { logger } from "../utils/Logger"
 import { steamApi, xblApi } from "./AxiosService"
 
-
 // TODO need to figure out how to get steam account info here
-
 // NOTE saving the XUID in the profile object - can just pull it off of the profile of the current user
 class ProfileService {
   async getXblProfile() {
@@ -19,8 +16,8 @@ class ProfileService {
         "X-AUTH": xauth
       }
     })
-    logger.log('get profile res', res.data)
-    AppState.profile = new XblProfile(res.data)
+    logger.log('xbl api response', res.data)
+    AppState.xblProfile = new XblProfile(res.data)
   }
 
   async getSteamProfile() {
