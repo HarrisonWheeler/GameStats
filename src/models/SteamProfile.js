@@ -9,5 +9,6 @@ export class SteamProfile {
     this.userName = data.personaname
     this.lastLogOff = new Date(data.lastlogoff * 1000)
     this.profileCreatedAt = new Date(data.timecreated * 1000)
+    this.lastTimeRetrieved = Date.now()
   }
 }

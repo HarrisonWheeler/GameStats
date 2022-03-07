@@ -21,25 +21,24 @@ export const AuthService = initialize({
 })
 
 AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
-  api.defaults.headers.authorization = AuthService.bearer
-  api.interceptors.request.use(refreshAuthToken)
-  AppState.user = AuthService.user
+  // api.defaults.headers.authorization = AuthService.bearer
+  // api.interceptors.request.use(refreshAuthToken)
+  // AppState.user = AuthService.user
   // await accountService.getAccount()
-  socketService.authenticate(AuthService.bearer)
-  // NOTE if there is something you want to do once the user is authenticated, place that here
+  // socketService.authenticate(AuthService.bearer)
 })
 
 async function refreshAuthToken(config) {
-  if (!AuthService.isAuthenticated) { return config }
-  const expires = AuthService.identity.exp * 1000
-  const expired = expires < Date.now()
-  const needsRefresh = expires < Date.now() + (1000 * 60 * 60 * 12)
-  if (expired) {
-    await AuthService.loginWithPopup()
-  } else if (needsRefresh) {
-    await AuthService.getTokenSilently()
-    api.defaults.headers.authorization = AuthService.bearer
-    socketService.authenticate(AuthService.bearer)
-  }
-  return config
+  // if (!AuthService.isAuthenticated) { return config }
+  // const expires = AuthService.identity.exp * 1000
+  // const expired = expires < Date.now()
+  // const needsRefresh = expires < Date.now() + (1000 * 60 * 60 * 12)
+  // if (expired) {
+  //   await AuthService.loginWithPopup()
+  // } else if (needsRefresh) {
+  //   await AuthService.getTokenSilently()
+  //   api.defaults.headers.authorization = AuthService.bearer
+  //   socketService.authenticate(AuthService.bearer)
+  // }
+  // return config
 }
