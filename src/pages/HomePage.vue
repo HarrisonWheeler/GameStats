@@ -1,13 +1,13 @@
 <template>
-  <div class=""></div>
+  <XboxProfile :xblProfile="xblProfile" />
 </template>
 
 <script>
-import { onMounted } from "@vue/runtime-core";
+import { computed, onMounted } from "@vue/runtime-core";
 import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { profileService } from "../services/ProfileService";
-import { loadState } from "../utils/LocalStorage";
+import { AppState } from "../AppState";
 export default {
   name: "Home",
   setup() {
@@ -20,7 +20,10 @@ export default {
         logger.log(error);
       }
     });
-    return {};
+    return {
+      xblProfile: computed(() => AppState.xblProfile),
+      steamProfile: computed(() => AppState.steamProfile),
+    };
   },
 };
 </script>

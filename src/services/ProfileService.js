@@ -10,8 +10,6 @@ import { steamApi, xblApi } from "./AxiosService"
 class ProfileService {
   async getXblProfile() {
     // FIXME seems to need a fresh xbox authentication everyday to make this request succeed - need to look into this
-    // TODO save profile into to local storage to prevent the need for a call to get xbl profile information everytime - or save the time the request was made, and only make another request to check profile data every day or few days
-    debugger
     if (AppState.xblProfile.lastTimeRetrieved - Date.now() > 86400000) {
       const res = await xblApi.get(`${xuid}/new-profile`, {
         headers: {
